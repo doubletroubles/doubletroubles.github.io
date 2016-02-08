@@ -1,0 +1,11 @@
+# Site settings
+title: Double Troubles
+description: > # this means to ignore newlines until "baseurl:"
+    The Double Troubles is a NYC-based swing choreography troupe. Our vision is to create performances that explore ambidancetrous swing dancing, so that the world can see more examples of swing dancers who both lead and follow and who dance with same-sex partners.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://doubletroubles.org" # the base hostname & protocol for your site
+twitter_username:
+github_username:
+
+# Build settings
+markdown: kramdown

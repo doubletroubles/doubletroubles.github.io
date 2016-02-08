@@ -1,0 +1,233 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+
+
+// Our variables
+$base-font-family: Helvetica, Arial, sans-serif;
+$base-font-size:   16px;
+$small-font-size:  $base-font-size * 0.875;
+$base-line-height: 1.5;
+
+$spacing-unit:     30px;
+
+$text-color:       #111;
+$background-color: #fdfdfd;
+$brand-color:      #2a7ae2;
+
+$grey-color:       #828282;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark:  darken($grey-color, 25%);
+
+$on-palm:          600px;
+$on-laptop:        800px;
+
+// we use these to define default font stacks
+$font-family-sans-serif: Helvetica, Arial, sans-serif;
+$font-family-headings: 'Montserrat', sans-serif;
+$font-family-simple: 'roboto', sans-serif;
+
+
+
+// Using media queries with like this:
+// @include media-query($palm) {
+//     .wrapper {
+//         padding-right: $spacing-unit / 2;
+//         padding-left: $spacing-unit / 2;
+//     }
+// }
+@mixin media-query($device) {
+    @media screen and (max-width: $device) {
+        @content;
+    }
+}
+
+
+
+// Import partials from `sass_dir` (defaults to `_sass`)
+@import
+        "base",
+        "layout",
+        "syntax-highlighting",
+        "foundation",
+        "normalize"
+;
+
+body {
+    background: #e7e7e7 url(/img/body-bg.png) 0 0 repeat
+}
+
+
+.banner {
+    //background: url(http://localhost:4000/img/banner.jpg) 50% 0% no-repeat;
+    //background: url(http://placehold.it/1500x400) 50% 0% no-repeat;
+    background: #333;
+    width: 100%;
+    padding-bottom: 30px;
+
+    h1.title {
+        color: white;
+        font-size: 48px;
+        font-family: 'Fjalla One', sans-serif;
+        @media #{$medium-up} {
+            font-size: 80px;
+            margin: 10px 0px;
+        }
+        text-transform: uppercase;
+    }
+
+    h2 {
+        color: #fed136;
+        text-transform: none;
+    }
+}
+
+h2 {
+    font-family: $font-family-headings;
+    color: #d5000d;
+    text-transform: uppercase;
+}
+
+ul.calendar-icon-table  {
+    @include pricing-table-container;
+    border: 5px solid black;
+
+    li.title {
+        @include pricing-table-title;
+        background-color: #E83332 !important;
+    }
+    .day, .time, .location, .choreographer  {
+        @include pricing-table-description;
+        color: #333;
+    }
+
+    .choreographer img {
+        max-height: 150px;
+    }
+
+    .location i {
+        margin-left: 5px;
+        font-size: 20px;
+    }
+
+    .cta {
+        @include pricing-table-cta
+    }
+}
+
+
+.section {
+    padding-top: 10px;
+}
+
+div.choreographer {
+    @include grid-column(4);
+
+    text-align: center;
+
+    @media #{$small-only} {
+        @include grid-column(12);
+    }
+}
+
+.member {
+    @include grid-column(3);
+    text-align: center;
+
+    @media #{$small-only} {
+        @include grid-column(6);
+    }
+}
+
+.one-week {
+    @include grid-column(12, $center:true);
+
+    @media #{$medium-up} {
+        @include grid-column(4);
+    }
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+//source: https://github.com/Suitey/NYCSubwayIcons/blob/master/NYCSubwayIcons.sass
+$BDFM: #FF6319;
+$G: #6CBE45;
+
+@mixin circle($color, $fontSize: 16px, $diameter: 24px) {
+    color: white;
+    width: $diameter;
+    font-weight: 400;
+    height: $diameter;
+    text-align: center;
+    border-radius: 50%;
+    font-size: $fontSize;
+    display: inline-block;
+    line-height: $diameter + 1;
+    background-color: $color;
+    font-family: Helvetica, sans-serif;
+}
+
+.B, .F, .D, .M {
+    @include circle($BDFM);
+}
+
+.G {
+    @include circle($G);
+}
+
+address {
+    font-style: normal;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+li.day, li.time {
+    text-align: center;
+    padding: 10px;
+    background: #333333;
+    color: #EEEEEE;
+}
+
+li.time {
+    font-size: 18px;
+    padding-bottom: 20px;
+}
+
+
+li.day {
+    font-size: 24px;
+    padding-top: 20px;
+}
+
+li.title, li.level {
+    text-align: center;
+    color: #EEEEEE;
+    background-color: $primary-color !important;
+}
+
+li.level {
+    font-size: 25px;
+    padding-top: 10px;
+}
+
+ul.class-picker {
+    list-style-type: none;
+}
+
+.field {
+    @include grid-column(12);
+
+    @media #{$medium-up} {
+        input[type="text"], input[type="tel"], small.error {
+            width: 50%;
+        }
+    }
+}
+
+input[type=radio] {
+    margin-right: 5px;
+}
